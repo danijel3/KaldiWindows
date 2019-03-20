@@ -119,3 +119,5 @@ if __name__ == '__main__':
     if args.cleanup:
         for file in work.glob('**/*'):
             file.unlink()
+
+    kaldi.close()

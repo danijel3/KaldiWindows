@@ -7,6 +7,7 @@ from pathlib import Path
 
 # Polish SAMPA only
 from utils.kaldi_programs import KaldiPrograms
+from utils.log import log
 
 nonsilence_phones = sorted(['I', 'S', 'Z', 'a', 'b', 'd', 'dZ', 'dz', 'dzi', 'e', 'en', 'f', 'g', 'i', 'j', 'k', 'l',
                             'm', 'n', 'ni', 'o', 'on', 'p', 'r', 's', 'si', 't', 'tS', 'ts', 'tsi', 'u', 'v', 'w', 'x',
@@ -16,7 +17,7 @@ optional_silence = 'sil'
 
 
 def prepare_language_file(text_path, output_dir, g2p_path, g2p_lex_path, oov, kaldi):
-    print(f'Using {text_path} to prepare language files in {output_dir}.', file=sys.stderr)
+    log.info(f'Using {text_path} to prepare language files in {output_dir}.')
 
     transcription = {}
     wordlist = set()
