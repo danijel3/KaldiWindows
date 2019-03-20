@@ -38,11 +38,7 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
     parser.add_argument('audio', help='Audio WAV file.')
-    parser.add_argument('trans', help='Transcription TXT/ANT file.')
-    parser.add_argument('-ow', '--output-words', action='store_true', help='Output words to output.csv file.')
-    parser.add_argument('-op', '--output-phonemes', action='store_true', help='Output phonemes to output.csv file.')
-    parser.add_argument('--segments', help='File describing the segments.')
-    parser.add_argument('--ant', action='store_true', help='Transcription is Annotator file.')
+    parser.add_argument('trans', help='Transcription ANT file.')
     parser.add_argument('--bin-root', help='Root folder containing all the binary files', default=str(def_bin))
     parser.add_argument('--cleanup', type=bool, default=True, help='Erase unnecessary files after completion.')
 
@@ -52,40 +48,20 @@ if __name__ == '__main__':
 
     work.mkdir(exist_ok=True)
 
-    if args.output_words or args.output_phonemes:
-        if (prog_root / 'output.csv').exists():
-            (prog_root / 'output.csv').unlink()
-
-    if args.ant:
-        args.segments = str(work / 'segments')
-        convert_ant_segments(args.trans, args.segments, work / 'text')
-        args.trans = str(work / 'text')
-
-    if not args.segments:
-        with open(work / 'text', 'w', encoding='utf-8') as f:
-            text_path = Path(args.trans)
-            with open(text_path, encoding='utf-8') as g:
-                text = g.readline().strip()
-            f.write(f'input {text}\n')
-            text_file = work / 'text'
-    else:
-        text_file = Path(args.trans)
+    segments = work / 'segments'
+    text_file = work / 'text'
+    convert_ant_segments(args.trans, segments, text_file)
 
     with open(work / 'wav.scp', 'w', encoding='utf-8') as f:
         wav_file = Path(args.audio)
         f.write(f'input {wav_file}\n')
 
-    kaldi.compute_mfcc_feats(work / 'wav.scp', work / 'mfcc', args.segments)
+    kaldi.compute_mfcc_feats(work / 'wav.scp', work / 'mfcc', segments)
     kaldi.compute_cmvn_stats(work / 'mfcc', work / 'cmvn')
 
-    if args.segments:
-        feature_pipeline = f'ark,s,cs:apply-cmvn ark:"{work / "cmvn"}" ark:"{work / "mfcc"}" ark:- | ' \
-            f'splice-feats --left-context=3 --right-context=3 ark:- ark:- | ' \
-            f'transform-feats "{lda_mat}" ark:- ark:- |'
-    else:
-        feature_pipeline = f'ark,s,cs:apply-cmvn ark:"{work / "cmvn"}" ark:"{work / "mfcc"}" ark:- | ' \
-            f'splice-feats --left-context=3 --right-context=3 ark:- ark:- | ' \
-            f'transform-feats "{lda_mat}" ark:- ark:- |'
+    feature_pipeline = f'ark,s,cs:apply-cmvn ark:"{work / "cmvn"}" ark:"{work / "mfcc"}" ark:- | ' \
+        f'splice-feats --left-context=3 --right-context=3 ark:- ark:- | ' \
+        f'transform-feats "{lda_mat}" ark:- ark:- |'
 
     output_pipeline = f'ark:|linear-to-nbest ark:- ark:"{work / "trans.int"}" "" "" ark:- | ' \
         f'lattice-align-words "{work / "word_boundary.int"}" "{model_file}" ark:- ark:"{work / "nbest_ali"}"'
@@ -124,28 +100,22 @@ if __name__ == '__main__':
                 g.write(' '.join(tok))
                 g.write('\n')
 
-    if args.segments:
-        fix_ctms(work / 'ctm.txt', args.segments, work / 'tmp')
-        move(work / 'tmp', work / 'ctm.txt')
-        fix_ctms(work / 'phone_ctm_fixed.txt', args.segments, work / 'tmp')
-        move(work / 'tmp', work / 'phone_ctm_fixed.txt')
+    fix_ctms(work / 'ctm.txt', segments, work / 'tmp')
+    move(work / 'tmp', work / 'ctm.txt')
+    fix_ctms(work / 'phone_ctm_fixed.txt', segments, work / 'tmp')
+    move(work / 'tmp', work / 'phone_ctm_fixed.txt')
 
-    if args.output_words:
-        with open(work / 'ctm.txt', encoding='utf-8') as f:
-            with open(prog_root / 'output.csv', 'w', encoding='utf-8', newline='\n') as g:
-                for l in f:
-                    tok = l.strip().split()
-                    g.write(f'{tok[2]}\t{tok[3]}\t{tok[4]}\n')
-    elif args.output_phonemes:
-        with open(work / 'phone_ctm_fixed.txt', encoding='utf-8') as f:
-            with open(prog_root / 'output.csv', 'w', encoding='utf-8', newline='\n') as g:
-                for l in f:
-                    tok = l.strip().split()
-                    if len(tok)>=5:
-                        g.write(f'{tok[2]}\t{tok[3]}\t{tok[4]}\n')
+    with open(work / 'ctm.txt', encoding='utf-8') as f:
+        for l in f:
+            tok = l.strip().split()
+            print(f'w\t{tok[2]}\t{tok[3]}\t{tok[4]}')
+
+    with open(work / 'phone_ctm_fixed.txt', encoding='utf-8') as f:
+        for l in f:
+            tok = l.strip().split()
+            if len(tok) >= 5:
+                print(f'p\t{tok[2]}\t{tok[3]}\t{tok[4]}')
 
     if args.cleanup:
-        save_files = {'ctm.txt', 'phone_ctm_fixed.txt'}
         for file in work.glob('**/*'):
-            if file.name not in save_files:
-                file.unlink()
+            file.unlink()

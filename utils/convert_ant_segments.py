@@ -1,13 +1,14 @@
 import argparse
 import sys
 from xml.etree import ElementTree
+from xml.etree.ElementTree import XMLParser
 from zipfile import ZipFile
 
 
 def convert_ant_segments(ant_file, segments_file, text_file):
     with ZipFile(ant_file) as zip:
-        with zip.open('annotation.xml',encoding='utf-8') as f:
-            annot = ElementTree.parse(f).getroot()
+        with zip.open('annotation.xml') as f:
+            annot = ElementTree.parse(f, parser=XMLParser(encoding='utf-8')).getroot()
 
     ns = {'a': 'http://tempuri.org/AnnotationSystemDataSet.xsd'}
 
@@ -34,8 +35,8 @@ def convert_ant_segments(ant_file, segments_file, text_file):
 
     print(f'Found {len(segments)} segments.', file=sys.stderr)
 
-    with open(segments_file, 'w',encoding='utf-8') as f:
-        with open(text_file, 'w',encoding='utf-8') as g:
+    with open(segments_file, 'w', encoding='utf-8') as f:
+        with open(text_file, 'w', encoding='utf-8') as g:
             for num, seg in enumerate(segments):
                 f.write(f'seg_{num:03} input {seg[1]:0.2f} {seg[2]:0.2f}\n')
                 g.write(f'seg_{num:03} {seg[0]}\n')
