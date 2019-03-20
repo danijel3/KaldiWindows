@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="a2d7b204-53c9-470e-b93a-43ec545fb42f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/convert_ant_segments.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/convert_ant_segments.py" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/KaldiWin$main.coverage" NAME="main Coverage Results" MODIFIED="1553083513344" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/KaldiWin$main_seg.coverage" NAME="main seg Coverage Results" MODIFIED="1551573439502" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/KaldiWin$main_ant.coverage" NAME="main ant Coverage Results" MODIFIED="1551888911906" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/KaldiWin$utils_convert_ant_segments.coverage" NAME="utils.convert_ant_segments Coverage Results" MODIFIED="1551573257766" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1470">
+              <caret line="116" column="27" selection-start-line="116" selection-start-column="27" selection-end-line="116" selection-end-column="27" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/utils/kaldi_programs.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="604">
+              <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>'I\nS\nZ\na\nb\nd\ndZ\ndz\ndzi\ne\nen\nf\ng\ni\nj\nk\nl\nm\nn\nni\no\non\np\nr\ns\nsi\nt\ntS\nts\ntsi\nu\nv\nw\nx\nz\nzi\n'</find>
+      <find>\\n</find>
+      <find>/</find>
+      <find>sil_dis</find>
+      <find>make_</find>
+      <find>trans.int</find>
+      <find>wav</find>
+      <find>16000</find>
+      <find>2d8f8c98</find>
+      <find>open</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>','</replace>
+      <replace>\\</replace>
+      <replace>\</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/xtrace" />
+        <option value="$PROJECT_DIR$/test.txt" />
+        <option value="$PROJECT_DIR$/int2sym.py" />
+        <option value="$PROJECT_DIR$/run.bat" />
+        <option value="$PROJECT_DIR$/apply_mapping.py" />
+        <option value="$PROJECT_DIR$/make_lexicon_fst.py" />
+        <option value="$PROJECT_DIR$/prepare_language.py" />
+        <option value="$PROJECT_DIR$/utils/make_lexicon_fst.py" />
+        <option value="$PROJECT_DIR$/test.sh" />
+        <option value="$PROJECT_DIR$/utils/apply_mapping.py" />
+        <option value="$PROJECT_DIR$/data/custom_phones.txt" />
+        <option value="$PROJECT_DIR$/utils/prepare_language.py" />
+        <option value="$PROJECT_DIR$/align.bat" />
+        <option value="$PROJECT_DIR$/utils/kaldi_programs.py" />
+        <option value="$PROJECT_DIR$/utils/fix_ctms.py" />
+        <option value="$PROJECT_DIR$/utils/prepare_language_full.py" />
+        <option value="$PROJECT_DIR$/utils/convert_ant_segments.py" />
+        <option value="$PROJECT_DIR$/main.py" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="y" value="-1" />
+    <option name="width" value="1366" />
+    <option name="height" value="741" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="KaldiWin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="KaldiWin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="KaldiWin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="KaldiWin" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///home/guest/PycharmProjects/KaldiWin/xtrace" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/data" />
+      <recent name="$PROJECT_DIR$/utils" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/OLD" />
+      <recent name="$PROJECT_DIR$/examples" />
+      <recent name="$PROJECT_DIR$/utils" />
+      <recent name="$PROJECT_DIR$/data" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="KaldiWin" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/miniconda3/envs/KaldiWin/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="main" />
+      <option name="PARAMETERS" value="examples/test.wav examples/test.txt" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="true" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python">
+      <module name="KaldiWin" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/miniconda3/envs/KaldiWin/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="main" />
+      <option name="PARAMETERS" value="examples/01_mono01.wav examples/01_mono01.ant" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="true" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a2d7b204-53c9-470e-b93a-43ec545fb42f" name="Default Changelist" comment="" />
+      <created>1539467668320</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1539467668320</updated>
+      <workItem from="1547569903306" duration="17000" />
+      <workItem from="1551523537062" duration="35845000" />
+      <workItem from="1551887402182" duration="5226000" />
+      <workItem from="1552600835210" duration="5075000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="46163000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="-1" width="1366" height="741" extended-state="6" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22348484" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3291536" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.5089141" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39916405" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.3294979" />
+      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.2123431" />
+      <window_info anchor="bottom" id="Python Console" order="12" weight="0.3291536" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Remote Host" order="3" />
+      <window_info anchor="right" id="SciView" order="4" />
+      <window_info anchor="right" id="Database" order="5" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Modified the main program to simplify its use as a standalone plugin." />
+    <option name="LAST_COMMIT_MESSAGE" value="Modified the main program to simplify its use as a standalone plugin." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/utils/apply_mapping.py</url>
+          <line>35</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/lang/phones/word_boundary.txt" />
+    <entry file="file://$PROJECT_DIR$/lang/phones/context_indep.csl" />
+    <entry file="file://$PROJECT_DIR$/lang/phones/nonsilence.csl" />
+    <entry file="file://$PROJECT_DIR$/lang/phones/optional_silence.csl" />
+    <entry file="file://$PROJECT_DIR$/lang/phones/silence.csl" />
+    <entry file="file://$PROJECT_DIR$/lang/phones/disambig.txt" />
+    <entry file="file://$PROJECT_DIR$/lang/phones/wdisambig.txt" />
+    <entry file="file://$PROJECT_DIR$/lang/phones/disambig.int" />
+    <entry file="file://$PROJECT_DIR$/lang/phones/disambig.csl" />
+    <entry file="file://$PROJECT_DIR$/lang/phones/wdisambig_words.int" />
+    <entry file="file://$PROJECT_DIR$/lang/phones/wdisambig_phones.int" />
+    <entry file="file://$USER_HOME$/miniconda3/lib/python3.6/subprocess.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="402" selection-start-line="402" selection-end-line="402" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tmp/lexicon_disambig_fst.txt" />
+    <entry file="file://$PROJECT_DIR$/ali/ctm.int" />
+    <entry file="file://$PROJECT_DIR$/lang/phones.txt" />
+    <entry file="file://$PROJECT_DIR$/lang/words.txt" />
+    <entry file="file://$PROJECT_DIR$/tmp/lexicon.raw" />
+    <entry file="file://$PROJECT_DIR$/tmp/lexiconp_disambig.txt" />
+    <entry file="file://$PROJECT_DIR$/tmp/trans.int" />
+    <entry file="file://$PROJECT_DIR$/ali/ctm.txt" />
+    <entry file="file://$PROJECT_DIR$/tmp/lexiconp.txt" />
+    <entry file="file://$PROJECT_DIR$/tmp/lexicon_fst.txt" />
+    <entry file="file://$PROJECT_DIR$/xtrace" />
+    <entry file="file://$PROJECT_DIR$/work/wav.scp" />
+    <entry file="file://$USER_HOME$/miniconda3/envs/KaldiWin/lib/python3.6/subprocess.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="587" column="8" selection-start-line="587" selection-start-column="8" selection-end-line="587" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/OLD/test.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="155" selection-start-line="27" selection-end-line="27" selection-end-column="155" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/g2p/lexicon.txt.bak">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/g2p/lexicon.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/work/lexicon.raw" />
+    <entry file="file://$PROJECT_DIR$/work/ctm.int" />
+    <entry file="file://$PROJECT_DIR$/work/phone_ctm.int" />
+    <entry file="file://$PROJECT_DIR$/work/phone_ctm.txt" />
+    <entry file="file://$PROJECT_DIR$/examples/test.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/work/text" />
+    <entry file="file://$PROJECT_DIR$/run.bat" />
+    <entry file="file://$PROJECT_DIR$/OLD/align.bat">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" selection-start-line="7" selection-end-line="8" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/custom_phones.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="5" lean-forward="true" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/annotation.xml" />
+    <entry file="file://$PROJECT_DIR$/align.bat" />
+    <entry file="file://$PROJECT_DIR$/examples/01_mono01.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/examples/01_mono01.seg">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/prepare_language.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2471">
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
+          <folding>
+            <element signature="e#47#62#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/work/phone_ctm_fixed.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/apply_mapping.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="29" column="9" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/fix_ctms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="55" selection-start-line="9" selection-start-column="55" selection-end-line="9" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/make_lexicon_fst.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="72" column="9" selection-start-line="72" selection-start-column="9" selection-end-line="72" selection-end-column="9" />
+          <folding>
+            <element signature="e#149#164#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/prepare_language_full.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="352" column="68" selection-start-line="352" selection-start-column="68" selection-end-line="352" selection-end-column="68" />
+          <folding>
+            <element signature="e#47#62#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/work/ctm.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/convert_ant_segments.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="40" lean-forward="true" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1470">
+          <caret line="116" column="27" selection-start-line="116" selection-start-column="27" selection-end-line="116" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/utils/kaldi_programs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="604">
+          <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
