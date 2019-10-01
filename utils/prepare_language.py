@@ -16,21 +16,43 @@ silence_phones = sorted(['sil', 'spn'])
 optional_silence = 'sil'
 
 
-def prepare_language_file(text_path, output_dir, g2p_path, g2p_lex_path, oov, kaldi):
-    log.info(f'Using {text_path} to prepare language files in {output_dir}.')
+def range2fields(range_str, length):
+    if len(range_str) == 0:
+        return []
+    if ',' in range_str:
+        a = []
+        for i in range_str.split(','):
+            a.append(int(i.strip()))
+        return a
+    if '-' in range_str:
+        if range_str[0] == '-':
+            start = 0
+        else:
+            p = range_str.index('-')
+            start = int(range_str[:p].strip())
+        if range_str[1] == '-':
+            end = length
+        else:
+            p = range_str.index('-')
+            end = int(range_str[p + 1:].strip())
+        return range(start, end)
+    return [int(range_str.strip())]
 
-    transcription = {}
-    wordlist = set()
-    with open(str(text_path), encoding='utf-8') as f:
-        for l in f:
-            tok = l.strip().split()
-            id = tok[0]
-            transcription[id] = []
-            for w in tok[1:]:
-                wordlist.add(w)
-                transcription[id].append(w)
-    wordlist = sorted(wordlist)
 
+def txt2int(txt, int, p_fields, w_fields, phone_map):
+    with open(str(txt), encoding='utf-8') as f:
+        with open(str(int), 'w', encoding='utf-8') as g:
+            for l in f:
+                tok = l.strip().split()
+                for f in range2fields(p_fields, len(tok)):
+                    tok[f] = str(phone_map[tok[f]])
+                for f in range2fields(w_fields, len(tok)):
+                    tok[f] = str(words_map[tok[f]])
+                g.write(' '.join(tok))
+                g.write('\n')
+
+
+def prepare_language_wordlist(wordlist, transcription, output_dir, g2p_path, g2p_lex_path, oov, kaldi):
     pre_lexicon = {}
     with open(str(g2p_lex_path), encoding='utf-8') as f:
         for l in f:
@@ -44,7 +66,8 @@ def prepare_language_file(text_path, output_dir, g2p_path, g2p_lex_path, oov, ka
             if w not in pre_lexicon:
                 f.write(f'{w}\n')
 
-    kaldi.phonetisaurus_g2p(g2p_path, output_dir / 'wordlist', output_dir / 'lexicon.raw')
+    kaldi.phonetisaurus_g2p(g2p_path, output_dir /
+                            'wordlist', output_dir / 'lexicon.raw')
 
     post_lexicon = {}
     with open(str(output_dir / 'lexicon.raw'), encoding='utf-8') as f:
@@ -156,6 +179,14 @@ def prepare_language_file(text_path, output_dir, g2p_path, g2p_lex_path, oov, ka
         for p, i in phone_map.items():
             f.write(f'{p} {i}\n')
 
+    phones_dir = output_dir/'phones'
+    phones_dir.mkdir(exist_ok=True)
+    with open(str(phones_dir / 'disambig.txt'), 'w', encoding='utf-8') as f:
+        for i in range(max_disambig + 1):
+            f.write(f'#{i}\n')
+
+    txt2int(phones_dir / 'disambig.txt', phones_dir / 'disambig.int', '0', '', phone_map)
+
     counter = 0
     words_map = {}
     words_map['<eps>'] = counter
@@ -176,12 +207,13 @@ def prepare_language_file(text_path, output_dir, g2p_path, g2p_lex_path, oov, ka
         for w, i in words_map.items():
             f.write(f'{w} {i}\n')
 
-    with open(str(output_dir / 'trans.int'), 'w', encoding='utf-8') as f:
-        for id, trans in transcription.items():
-            f.write(id)
-            for w in trans:
-                f.write(f' {words_map[w]}')
-            f.write('\n')
+    if transcription:
+        with open(str(output_dir / 'trans.int'), 'w', encoding='utf-8') as f:
+            for id, trans in transcription.items():
+                f.write(id)
+                for w in trans:
+                    f.write(f' {words_map[w]}')
+                f.write('\n')
 
     with open(str(output_dir / 'word_boundary.int'), 'w', encoding='utf-8') as f:
         cnt = 1
@@ -200,6 +232,23 @@ def prepare_language_file(text_path, output_dir, g2p_path, g2p_lex_path, oov, ka
     kaldi.fstarcsort(output_dir / 'L_unsorted.fst', output_dir / 'L.fst')
 
 
+def prepare_language_file(text_path, output_dir, g2p_path, g2p_lex_path, oov, kaldi):
+    log.info(f'Using {text_path} to prepare language files in {output_dir}.')
+
+    transcription = {}
+    wordlist = set()
+    with open(str(text_path), encoding='utf-8') as f:
+        for l in f:
+            tok = l.strip().split()
+            id = tok[0]
+            transcription[id] = []
+            for w in tok[1:]:
+                wordlist.add(w)
+                transcription[id].append(w)
+    wordlist = sorted(wordlist)
+    return prepare_language_wordlist(wordlist, transcription, output_dir, g2p_path, g2p_lex_path, oov, kaldi)
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('text')
@@ -207,7 +256,8 @@ if __name__ == '__main__':
     parser.add_argument('--oov-word', default='<unk>')
     parser.add_argument('--g2p-model', default='data/g2p/model.fst')
     parser.add_argument('--g2p-lexicon', default='data/g2p/lexicon.txt')
-    parser.add_argument('--kaldi-root', default='/home/guest/Applications/kaldi')
+    parser.add_argument(
+        '--kaldi-root', default='/home/guest/Applications/kaldi')
 
     args = parser.parse_args()
 
@@ -221,4 +271,5 @@ if __name__ == '__main__':
     g2p_lex_path = Path(args.g2p_lexicon)
     oov = args.oov_word
 
-    prepare_language_file(text_path, output_dir, g2p_path, g2p_lex_path, oov, kaldi)
+    prepare_language_file(text_path, output_dir, g2p_path,
+                          g2p_lex_path, oov, kaldi)

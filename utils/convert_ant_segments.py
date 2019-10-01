@@ -3,14 +3,16 @@ import sys
 from xml.etree import ElementTree
 from xml.etree.ElementTree import XMLParser
 from zipfile import ZipFile
+from typing import List
 
 from utils.log import log
 
 
-def convert_ant_segments(ant_file, segments_file, text_file):
+def process_ant_segments(ant_file) -> List[tuple]:
     with ZipFile(ant_file) as zip:
         with zip.open('annotation.xml') as f:
-            annot = ElementTree.parse(f, parser=XMLParser(encoding='utf-8')).getroot()
+            annot = ElementTree.parse(
+                f, parser=XMLParser(encoding='utf-8')).getroot()
 
     ns = {'a': 'http://tempuri.org/AnnotationSystemDataSet.xsd'}
 
@@ -33,7 +35,12 @@ def convert_ant_segments(ant_file, segments_file, text_file):
         end = round(start + length, 2)
         segments.append((text, start, end))
 
-    segments = sorted(segments, key=lambda x: x[1])
+    return sorted(segments, key=lambda x: x[1])
+
+
+def convert_ant_segments(ant_file, segments_file, text_file):
+
+    segments = process_ant_segments(ant_file)
 
     log.info(f'Found {len(segments)} segments.')
 

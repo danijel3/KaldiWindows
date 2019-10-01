@@ -1,7 +1,7 @@
 import argparse
 import sys
 from pathlib import Path
-from shutil import move
+from shutil import move, copy
 
 from utils.apply_mapping import apply_mapping
 from utils.convert_ant_segments import convert_ant_segments
@@ -37,10 +37,11 @@ else:
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('audio', help='Audio WAV file.')
-    parser.add_argument('trans', help='Transcription ANT file.')
-    parser.add_argument('--bin-root', help='Root folder containing all the binary files', default=str(def_bin))
-    parser.add_argument('--cleanup', type=bool, default=True, help='Erase unnecessary files after completion.')
+    parser.add_argument('audio', type=Path, help='Audio WAV file.')
+    parser.add_argument('trans', type=Path, help='Transcription file.')
+    parser.add_argument('--type', '-t', default='ant',help='Type of transcription: ant (ANT xml transcription and segmentation), txt (text transcription)')
+    parser.add_argument('--bin-root', type=Path, help='Root folder containing all the binary files', default=def_bin)
+    parser.add_argument('--cleanup', type=str, default='y', help='Erase unnecessary files after completion.')
 
     args = parser.parse_args()
 
@@ -50,7 +51,17 @@ if __name__ == '__main__':
 
     segments = work / 'segments'
     text_file = work / 'text'
-    convert_ant_segments(args.trans, segments, text_file)
+
+    if args.type=='ant':
+        convert_ant_segments(args.trans, segments, text_file)
+    elif args.type=='txt':
+        with open(str(args.trans)) as f, open(str(text_file),'w') as g:
+            l=f.readline().strip()
+            g.write('input '+l+'\n')                
+        segments=None
+    else:
+        print('Unknown type!')
+        exit(1)
 
     with open(work / 'wav.scp', 'w', encoding='utf-8') as f:
         wav_file = Path(args.audio)
@@ -100,10 +111,11 @@ if __name__ == '__main__':
                 g.write(' '.join(tok))
                 g.write('\n')
 
-    fix_ctms(work / 'ctm.txt', segments, work / 'tmp')
-    move(work / 'tmp', work / 'ctm.txt')
-    fix_ctms(work / 'phone_ctm_fixed.txt', segments, work / 'tmp')
-    move(work / 'tmp', work / 'phone_ctm_fixed.txt')
+    if segments:
+        fix_ctms(work / 'ctm.txt', segments, work / 'tmp')
+        move(work / 'tmp', work / 'ctm.txt')
+        fix_ctms(work / 'phone_ctm_fixed.txt', segments, work / 'tmp')
+        move(work / 'tmp', work / 'phone_ctm_fixed.txt')
 
     with open(work / 'ctm.txt', encoding='utf-8') as f:
         for l in f:
@@ -116,7 +128,7 @@ if __name__ == '__main__':
             if len(tok) >= 5:
                 print(f'p\t{tok[2]}\t{tok[3]}\t{tok[4]}')
 
-    if args.cleanup:
+    if args.cleanup.lower() in ['y','yes','t','true']:
         for file in work.glob('**/*'):
             file.unlink()
 
